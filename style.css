@@ -1,0 +1,107 @@
+:root {
+  --dark-black-color: #181818;
+  --back-color: #212121;
+  --light-black-color: #323232;
+  --white-color: whitesmoke;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+ul {
+  list-style: none;
+}
+
+input {
+  outline: none;
+  border: none;
+}
+
+button {
+  outline: none;
+  border: none;
+  cursor: pointer;
+}
+
+header {
+  width: 100vw;
+  height: 56px;
+  background-color: var(--back-color);
+  color: var(--white-color);
+  display: flex;
+  justify-content:space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--light-black-color);
+}
+
+header .material-icons {
+  font-size: 24px;
+}
+
+.logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo > img {
+  width: auto;
+  height: 20px;
+}
+
+.logo > h1 {
+  font-size: 20px;
+  color: var(--white-color);
+}
+
+.search {
+  display: flex;
+  align-items: center;
+  width: 40%;
+}
+
+.search > input {
+  width: 100%;
+  height: 40px;
+  background-color: var(--dark-black-color);
+  color: var(--white-color);
+  border: 1px solid var(--light-black-color);
+  padding-left: 10px;
+  font-size: 16px;
+}
+
+.search > button {
+  width: 85px;
+  height: 40px;
+  background-color: var(--light-black-color);
+  color: var(--white-color);
+  margin-right: 10px;
+}
+
+.search .mic {
+  background-color: var(--dark-black-color);
+  height: 40px;
+  width: 60px;
+  border-radius: 50px;
+  line-height: 40px;
+  text-align: center;
+}
+
+.icons {
+  display: flex;
+  align-items: center;
+}
+
+.icons > span,
+.icons > img {
+  margin-right: 30px;
+}
+
+.icons > img {
+  border-radius: 50%;
+  width: auto;
+  height: 35px;
+}
