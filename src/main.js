@@ -37,7 +37,7 @@ window.addEventListener('load', () => {
           </div>
         </li>
       `;
-        main.insertAdjacentHTML('beforeend', video);
+        videos.insertAdjacentHTML('beforeend', video);
       });
     })
     .catch((error) => console.log('error', error));
