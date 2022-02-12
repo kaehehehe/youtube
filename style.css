@@ -15,7 +15,12 @@
   user-select: none;
 }
 
-ul {
+body {
+  background-color: var(--dark-black-color);
+}
+
+ul,
+li {
   list-style: none;
 }
 
@@ -42,6 +47,7 @@ header {
   margin-left: 70px;
   position: fixed;
   top: 0;
+  z-index: 90;
 }
 
 header .material-icons {
@@ -163,6 +169,7 @@ header .material-icons {
   top: 0;
   left: -200px;
   transition: all 150ms linear;
+  z-index: 100;
 }
 
 .detailed-nav.show {
@@ -253,5 +260,50 @@ header .material-icons {
 .footer .copylight {
   font-size: 1px;
   font-weight: normal;
+  color: gray;
+}
+
+.main {
+  width: calc(100% - 70px);
+  background-color: var(--dark-black-color);
+  color: var(--white-color);
+  margin-left: 80px;
+}
+
+.videos {
+  background-color: var(--dark-black-color);
+  text-align: end;
+  padding-top: 70px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.video {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  cursor: pointer;
+  margin-bottom: 20px;
+  width: 250px;
+  margin-right: 15px;
+  transition: all 200ms ease-in;
+}
+
+.video:hover {
+  transform: scale(1.05);
+}
+
+.thumbnail {
+  width: 100%;
+}
+
+.title {
+  margin-top: 8px;
+  font-size: 13px;
+}
+
+.channel {
+  margin-top: 5px;
+  font-size: 5px;
   color: gray;
 }
