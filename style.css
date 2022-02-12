@@ -39,7 +39,6 @@ header {
   align-items: center;
   border-bottom: 1px solid var(--light-black-color);
   margin-left: 70px;
-  display: none;
 }
 
 header .material-icons {
@@ -57,7 +56,7 @@ header .material-icons {
   height: 20px;
 }
 
-.title > h1 {
+.title h1 {
   font-size: 20px;
   color: var(--white-color);
 }
@@ -122,7 +121,8 @@ header .material-icons {
   color: var(--white-color);
   text-align: center;
   padding-top: 15px;
-  display: none;
+  position: absolute;
+  top: 0;
 }
 
 .default-nav .humberger-menu {
@@ -145,7 +145,6 @@ header .material-icons {
 }
 
 .default-nav .material-icons {
-  display: block;
   font-size: 24px;
 }
 
@@ -157,7 +156,14 @@ header .material-icons {
   background-color: var(--back-color);
   width: 200px;
   color: var(--white-color);
-  position: relative;
+  position: absolute;
+  top: 0;
+  left: -200px;
+  transition: all 150ms linear;
+}
+
+.detailed-nav.show {
+  left: 0px;
 }
 
 .detailed-nav .section {
@@ -174,16 +180,25 @@ header .material-icons {
 .detailed-nav__title {
   position: sticky;
   top: 0;
-  padding: 10px 0;
+  padding: 15px 0;
   background-color: var(--back-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.detailed-nav__title > h1 {
-  font-size: 15px;
+.detailed-nav__title h1 {
+  font-size: 20px;
+}
+
+.material-icons.humberger-menu {
+  margin: 0 20px;
+  cursor: pointer;
 }
 
 .detailed-nav__menu {
   overflow-y: scroll;
+  cursor: pointer;
 }
 
 .detailed-nav__title,
@@ -192,10 +207,8 @@ header .material-icons {
   justify-content: flex-start;
   align-items: center;
   width: 100%;
-  cursor: pointer;
 }
 
-.detailed-nav__title .material-icons,
 .detailed-nav__menu .material-icons {
   font-size: 20px;
   padding: 8px 20px;
