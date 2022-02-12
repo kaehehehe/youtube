@@ -40,6 +40,8 @@ header {
   align-items: center;
   border-bottom: 1px solid var(--light-black-color);
   margin-left: 70px;
+  position: fixed;
+  top: 0;
 }
 
 header .material-icons {
@@ -122,7 +124,7 @@ header .material-icons {
   color: var(--white-color);
   text-align: center;
   padding-top: 15px;
-  position: absolute;
+  position: fixed;
   top: 0;
 }
 
