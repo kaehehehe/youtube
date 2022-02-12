@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" href="images/favicon.ico">
+    <link rel="icon" href="images/favicon.ico" />
     <link rel="stylesheet" href="style.css" />
     <link
       href="https://fonts.googleapis.com/icon?family=Material+Icons"
@@ -16,8 +16,8 @@
 
   <body>
     <header>
-      <div class="logo">
-        <img src="images/logo.png" alt="youtube logo" />
+      <div class="title">
+        <img src="images/logo.png" alt="youtube logo" class="logo" />
         <h1>YouTube</h1>
       </div>
       <div class="search">
@@ -34,7 +34,7 @@
         <img src="images/userIcon.jpg" alt="user icon" />
       </div>
     </header>
-    <nav>
+    <nav class="default-nav">
       <div class="humberger-menu">
         <span class="material-icons">menu</span>
       </div>
@@ -53,6 +53,115 @@
       <div class="menu">
         <span class="material-icons">video_library</span>
         <span class="title">Library</span>
+      </div>
+    </nav>
+    <nav class="detailed-nav">
+      <div class="detailed-nav__title">
+        <span class="material-icons">menu</span>
+        <img src="images/logo.png" alt="youtube logo" class="logo" />
+        <h1>YouTube</h1>
+      </div>
+      <div class="section">
+        <div class="detailed-nav__menu focused">
+          <span class="material-icons">home</span>
+          <span class="title">Home</span>
+        </div>
+        <div class="detailed-nav__menu">
+          <span class="material-icons">explore</span>
+          <span class="title">Explore</span>
+        </div>
+        <div class="detailed-nav__menu">
+          <span class="material-icons">subscriptions</span>
+          <span class="title">Subscriptions</span>
+        </div>
+      </div>
+      <div class="section">
+        <div class="detailed-nav__menu">
+          <span class="material-icons">video_library</span>
+          <span class="title">Library</span>
+        </div>
+        <div class="detailed-nav__menu">
+          <span class="material-icons">restore</span>
+          <span class="title">History</span>
+        </div>
+        <div class="detailed-nav__menu">
+          <span class="material-icons">slideshow</span>
+          <span class="title">Your videos</span>
+        </div>
+
+        <div class="detailed-nav__menu">
+          <span class="material-icons">schedule</span>
+          <span class="title">Watch later</span>
+        </div>
+        <div class="detailed-nav__menu">
+          <span class="material-icons">thumb_up_off_alt</span>
+          <span class="title">Liked videos</span>
+        </div>
+      </div>
+      <div class="section">
+        <h5>MORE FROM YOUTUBE</h5>
+        <div class="detailed-nav__menu">
+          <span class="material-icons">smart_display</span>
+          <span class="title">YouTube&nbsp;Premium</span>
+        </div>
+        <div class="detailed-nav__menu">
+          <span class="material-icons">theaters</span>
+          <span class="title">Movies</span>
+        </div>
+        <div class="detailed-nav__menu">
+          <span class="material-icons">sports_esports</span>
+          <span class="title">Gaming</span>
+        </div>
+        <div class="detailed-nav__menu">
+          <span class="material-icons">stream</span>
+          <span class="title">Live</span>
+        </div>
+        <div class="detailed-nav__menu">
+          <span class="material-icons">lightbulb</span>
+          <span class="title">Learning</span>
+        </div>
+        <div class="detailed-nav__menu border">
+          <span class="material-icons">emoji_events</span>
+          <span class="title">Sports</span>
+        </div>
+      </div>
+      <div class="section">
+        <div class="detailed-nav__menu">
+          <span class="material-icons">settings</span>
+          <span class="title">Settings</span>
+        </div>
+        <div class="detailed-nav__menu">
+          <span class="material-icons">flag</span>
+          <span class="title">Report&nbsp;history</span>
+        </div>
+        <div class="detailed-nav__menu">
+          <span class="material-icons">help_outline</span>
+          <span class="title">Help</span>
+        </div>
+        <div class="detailed-nav__menu border">
+          <span class="material-icons">announcement</span>
+          <span class="title">Send&nbsp;feedback</span>
+        </div>
+      </div>
+      <div class="section footer">
+        <p>
+          About Press Copyright<br />
+          Contact us Creators<br />
+          Advertise Deelopers<br />
+        </p>
+        <p>
+          Terms Privacy Policy & Safety<br />
+          How YouTube works<br />
+          Test new features<br />
+        </p>
+        <p class="copylight">
+          ©2022 Google LLC<br />
+          CEO:Sundar Pichai<br />
+          Address: 1600 Amphitheatre<br />
+          Parkway, Mountain View, CA 94043,<br />
+          USA.<br />
+          Phone: 080-822-1450(free)
+        </p>
       </div>
     </nav>
   </body>
