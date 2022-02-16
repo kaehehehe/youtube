@@ -33,10 +33,10 @@ window.addEventListener('load', () => {
       items.forEach((item) => {
         const video = `
         <li class="video">
-          <img src="${item.snippet.thumbnails.medium.url}" alt="video thumbnail" class="thumbnail">
+          <img src="${item.snippet.thumbnails.medium.url}" alt="video thumbnail" class="video__thumbnail">
           <div>
-            <p class="title">${item.snippet.title}</p>
-            <p class="channel">${item.snippet.channelTitle}</p>
+            <p class="video__title">${item.snippet.title}</p>
+            <p class="video__channel">${item.snippet.channelTitle}</p>
           </div>
         </li>
       `;
