@@ -5,8 +5,8 @@ const detailedHumbergerMenu = document.querySelector(
 const detailedNav = document.querySelector('.detailed-nav');
 const main = document.querySelector('.main');
 const videos = document.querySelector('.videos');
-const input = document.querySelector('.search__input');
-const inputBtn = document.querySelector('.search__button');
+const input = document.querySelector('.header__search-input');
+const inputBtn = document.querySelector('.header__search-button');
 let inputValue;
 
 defaultHumbergerMenu.addEventListener('click', () => {

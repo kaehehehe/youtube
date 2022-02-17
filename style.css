@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
 
 :root {
+  --input-black-color: #121212;
   --dark-black-color: #181818;
   --back-color: #212121;
   --light-black-color: #323232;
@@ -35,7 +36,9 @@ button {
   cursor: pointer;
 }
 
-header {
+/* Header */
+
+#header {
   width: calc(100vw - 70px);
   height: 56px;
   background-color: var(--back-color);
@@ -50,11 +53,11 @@ header {
   z-index: 90;
 }
 
-header .material-icons {
+#header .material-icons {
   font-size: 24px;
 }
 
-.title {
+.header__title {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -63,30 +66,31 @@ header .material-icons {
 .logo {
   width: auto;
   height: 20px;
+  margin-right: 5px;
 }
 
-.title h1 {
-  font-size: 20px;
+.header__title-name {
+  font-size: 23px;
   color: var(--white-color);
 }
 
-.search {
+.header__search {
   display: flex;
   align-items: center;
-  width: 40%;
+  width: 45%;
 }
 
-.search > input {
+.header__search-input {
   width: 100%;
   height: 40px;
-  background-color: var(--dark-black-color);
+  background-color: #121212;
   color: var(--white-color);
   border: 1px solid var(--light-black-color);
   padding-left: 10px;
   font-size: 16px;
 }
 
-.search > button {
+.header__search-button {
   width: 85px;
   height: 40px;
   background-color: var(--light-black-color);
@@ -94,26 +98,26 @@ header .material-icons {
   margin-right: 10px;
 }
 
-.search .mic {
+.material-icons.mic {
   background-color: var(--dark-black-color);
   height: 40px;
-  width: 60px;
-  border-radius: 50px;
+  width: 50px;
+  border-radius: 50%;
   line-height: 40px;
   text-align: center;
 }
 
-.icons {
+.header__icons {
   display: flex;
   align-items: center;
 }
 
-.icons > span,
-.icons > img {
+.header__icons > span,
+.header__icons > img {
   margin-right: 30px;
 }
 
-.icons > img {
+.header__icons > img {
   border-radius: 50%;
   width: auto;
   height: 35px;
