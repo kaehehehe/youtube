@@ -1,6 +1,6 @@
-const defaultHumbergerMenu = document.querySelector('.humberger-menu');
-const detailedHumbergerMenu = document.querySelector(
-  '.material-icons.humberger-menu'
+const simpleMenu = document.querySelector('.hamburger-menu');
+const detailedMenu = document.querySelector(
+  '.material-icons.hamburger-menu'
 );
 const detailedNav = document.querySelector('.detailed-nav');
 const main = document.querySelector('.main');
@@ -9,11 +9,12 @@ const input = document.querySelector('.header__search-input');
 const inputBtn = document.querySelector('.header__search-button');
 let inputValue;
 
-defaultHumbergerMenu.addEventListener('click', () => {
+simpleMenu.addEventListener('click', () => {
+  console.log('click')
   detailedNav.classList.add('show');
 });
 
-detailedHumbergerMenu.addEventListener('click', () => {
+detailedMenu.addEventListener('click', () => {
   detailedNav.classList.remove('show');
 });
 
