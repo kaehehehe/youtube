@@ -61,6 +61,8 @@ button {
   display: flex;
   justify-content: center;
   align-items: center;
+  text-decoration: none;
+  cursor: pointer;
 }
 
 .logo {
@@ -208,6 +210,16 @@ button {
   display: flex;
   justify-content: center;
   align-items: center;
+
+}
+
+.detailed-nav__link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--white-color);
+  text-decoration: none;
+  cursor: pointer;
 }
 
 .detailed-nav__title h1 {
