@@ -1,21 +1,29 @@
 const simpleMenu = document.querySelector('.hamburger-menu');
-const detailedMenu = document.querySelector(
-  '.material-icons.hamburger-menu'
-);
+const detailedMenu = document.querySelector('.material-icons.hamburger-menu');
 const detailedNav = document.querySelector('.detailed-nav');
 const main = document.querySelector('.main');
 const videos = document.querySelector('.videos');
 const input = document.querySelector('.header__search-input');
 const inputBtn = document.querySelector('.header__search-button');
+const background = document.querySelector('.background');
 let inputValue;
 
 simpleMenu.addEventListener('click', () => {
-  console.log('click')
   detailedNav.classList.add('show');
+  background.style.display = 'block';
+  document.body.style.overflow = 'hidden';
 });
 
 detailedMenu.addEventListener('click', () => {
   detailedNav.classList.remove('show');
+  background.style.display = 'none';
+  document.body.style.overflow = 'visible';
+});
+
+background.addEventListener('click', () => {
+  detailedNav.classList.remove('show');
+  background.style.display = 'none';
+  document.body.style.overflow = 'visible';
 });
 
 window.addEventListener('load', () => {
