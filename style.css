@@ -316,6 +316,14 @@ button {
 
 .video__channel {
   margin-top: 5px;
+}
+
+.video__published-at {
+  margin-top: 3px;
+}
+
+.video__channel,
+.video__published-at {
   font-size: 12px;
   color: gray;
 }

@@ -8,6 +8,24 @@ const inputBtn = document.querySelector('.header__search-button');
 const background = document.querySelector('.background');
 let inputValue;
 
+function publishedAt(data) {
+  const published = data.split('T')[0].split('-');
+  const [publishedYear, publishedMonth, publishedDay] = published;
+  const today = new Date();
+  if (today.getFullYear() != publishedYear) {
+    const year = today.getFullYear() - publishedYear;
+    return year === 1 ? `${year} year` : `${year} years`;
+  }
+  if (today.getMonth() + 1 != publishedMonth) {
+    const month = today.getMonth() + 1 - publishedYear;
+    return month === 1 ? `${month} month` : `${month} months`;
+  }
+  if (today.getDate() != publishedDay) {
+    const day = today.getDate() - publishedDay;
+    return day === 1 ? `${day} day` : `${day} days`;
+  }
+}
+
 simpleMenu.addEventListener('click', () => {
   detailedNav.classList.add('show');
   background.style.display = 'block';
@@ -42,10 +60,15 @@ window.addEventListener('load', () => {
       items.forEach((item) => {
         const video = `
         <li class="video">
-          <img src="${item.snippet.thumbnails.medium.url}" alt="video thumbnail" class="video__thumbnail">
+          <img src="${
+            item.snippet.thumbnails.medium.url
+          }" alt="video thumbnail" class="video__thumbnail">
           <div>
             <p class="video__title">${item.snippet.title}</p>
             <p class="video__channel">${item.snippet.channelTitle}</p>
+            <p class="video__published-at">${publishedAt(
+              item.snippet.publishedAt
+            )} ago</p>
           </div>
         </li>
       `;
