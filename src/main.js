@@ -82,7 +82,7 @@ function resetVideos() {
   while (videos.firstChild) {
     videos.removeChild(videos.firstChild);
   }
-}
+} 
 
 function search() {
   const requestOptions = {
@@ -95,14 +95,19 @@ function search() {
   )
     .then((response) => response.json())
     .then((result) => {
+      videos.classList.add('searched');
       const items = result.items;
       items.forEach((item) => {
         const video = `
-        <li class="video">
-          <img src="${item.snippet.thumbnails.medium.url}" alt="video thumbnail" class="thumbnail">
-          <div>
-            <p class="title">${item.snippet.title}</p>
-            <p class="channel">${item.snippet.description}</p>
+        <li class="searched__video">
+          <div class="searched__video-thumbnail">
+            <img src="${item.snippet.thumbnails.medium.url}" alt="video thumbnail">
+          </div>
+          <div class="searched__video-metadata">
+            <p class="searched__video-title">${item.snippet.title}</p>
+            <p class="searched__video-published-at">${publishedAt(item.snippet.publishedAt)} ago</p>
+            <p class="searched__video-channel">${item.snippet.channelTitle}</p>
+            <p class="searched__video-description">${item.snippet.description}</p>
           </div>
         </li>
       `;
