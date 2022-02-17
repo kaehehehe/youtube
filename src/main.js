@@ -12,15 +12,15 @@ function publishedAt(data) {
   const published = data.split('T')[0].split('-');
   const [publishedYear, publishedMonth, publishedDay] = published;
   const today = new Date();
-  if (today.getFullYear() != publishedYear) {
+  if (today.getFullYear() !== Number(publishedYear)) {
     const year = today.getFullYear() - publishedYear;
     return year === 1 ? `${year} year` : `${year} years`;
   }
-  if (today.getMonth() + 1 != publishedMonth) {
-    const month = today.getMonth() + 1 - publishedYear;
+  if (today.getMonth() + 1 !== Number(publishedMonth)) {
+    const month = today.getMonth() + 1 - publishedMonth;
     return month === 1 ? `${month} month` : `${month} months`;
   }
-  if (today.getDate() != publishedDay) {
+  if (today.getDate() !== Number(publishedDay)) {
     const day = today.getDate() - publishedDay;
     return day === 1 ? `${day} day` : `${day} days`;
   }
@@ -82,7 +82,7 @@ function resetVideos() {
   while (videos.firstChild) {
     videos.removeChild(videos.firstChild);
   }
-} 
+}
 
 function search() {
   const requestOptions = {
@@ -101,13 +101,19 @@ function search() {
         const video = `
         <li class="searched__video">
           <div class="searched__video-thumbnail">
-            <img src="${item.snippet.thumbnails.medium.url}" alt="video thumbnail">
+            <img src="${
+              item.snippet.thumbnails.medium.url
+            }" alt="video thumbnail">
           </div>
           <div class="searched__video-metadata">
             <p class="searched__video-title">${item.snippet.title}</p>
-            <p class="searched__video-published-at">${publishedAt(item.snippet.publishedAt)} ago</p>
+            <p class="searched__video-published-at">${publishedAt(
+              item.snippet.publishedAt
+            )} ago</p>
             <p class="searched__video-channel">${item.snippet.channelTitle}</p>
-            <p class="searched__video-description">${item.snippet.description}</p>
+            <p class="searched__video-description">${
+              item.snippet.description
+            }</p>
           </div>
         </li>
       `;
