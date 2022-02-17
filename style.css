@@ -311,12 +311,12 @@ button {
 
 .video__title {
   margin-top: 8px;
-  font-size: 13px;
+  font-size: 14px;
 }
 
 .video__channel {
   margin-top: 5px;
-  font-size: 5px;
+  font-size: 12px;
   color: gray;
 }
 
