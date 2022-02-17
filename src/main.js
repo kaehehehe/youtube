@@ -33,7 +33,7 @@ window.addEventListener('load', () => {
   };
 
   fetch(
-    'https://youtube.googleapis.com/youtube/v3/videos?part=snippet&chart=mostPopular&maxResults=50&key=AIzaSyCf2Majtq2MQgIx7hgo2229KVtVHU3339w',
+    'https://youtube.googleapis.com/youtube/v3/videos?part=snippet&chart=mostPopular&maxResults=50&key=AIzaSyCf2Majtq2MQgIx7hgo2229KVtVHU3339w&regionCode=KR',
     requestOptions
   )
     .then((response) => response.json())
