@@ -6,7 +6,9 @@ const videos = document.querySelector('.videos');
 const input = document.querySelector('.header__search-input');
 const inputBtn = document.querySelector('.header__search-button');
 const background = document.querySelector('.background');
+const API_KEY = 'AIzaSyCf2Majtq2MQgIx7hgo2229KVtVHU3339w';
 let inputValue;
+let searched = false;
 
 function publishedAt(data) {
   const published = data.split('T')[0].split('-');
@@ -49,38 +51,55 @@ background.addEventListener('click', () => {
   document.body.style.overflow = 'visible';
 });
 
-window.addEventListener('load', () => {
-  const requestOptions = {
-    method: 'GET',
-    redirect: 'follow',
-  };
+const getRequestOptions = { method: 'GET', redirect: 'follow' };
 
-  fetch(
-    'https://youtube.googleapis.com/youtube/v3/videos?part=snippet&chart=mostPopular&maxResults=50&key=AIzaSyCf2Majtq2MQgIx7hgo2229KVtVHU3339w&regionCode=KR',
-    requestOptions
+function getChannelIcon(videoData) {
+  return fetch(
+    `https://youtube.googleapis.com/youtube/v3/channels?part=snippet&id=${videoData.snippet.channelId}&key=${API_KEY}`,
+    getRequestOptions
   )
-    .then((response) => response.json())
-    .then((result) => {
-      const items = result.items;
-      items.forEach((item) => {
-        const video = `
-        <li class="video">
-          <img src="${
-            item.snippet.thumbnails.medium.url
-          }" alt="video thumbnail" class="video__thumbnail">
-          <div>
-            <p class="video__title">${item.snippet.title}</p>
-            <p class="video__channel">${item.snippet.channelTitle}</p>
-            <p class="video__published-at">${publishedAt(
-              item.snippet.publishedAt
-            )} ago</p>
-          </div>
-        </li>
-      `;
-        videos.insertAdjacentHTML('beforeend', video);
+    .then((res) => res.json())
+    .then((data) => {
+      videoData.channelThumbnail = data.items[0].snippet.thumbnails.default.url;
+      searched ? setSearchedVideos(videoData) : setVideos(videoData);
+    });
+}
+
+function setVideos(data) {
+  const video = `
+  <li class="video">
+    <img src="${
+      data.snippet.thumbnails.medium.url
+    }" alt="video thumbnail" class="video__thumbnail">
+      <div class="video__wrapper">
+        <img src=${
+          data.channelThumbnail
+        } alt="channel thumbnail" class="video__channel-thumbnail">
+        <div class="video__metadata">
+          <p class="video__metadata-title">${data.snippet.title}</p>
+          <p class="video__metadata-channel">${data.snippet.channelTitle}</p>
+          <p class="video__metadata-published-at">${publishedAt(
+            data.snippet.publishedAt
+          )} ago</p>
+        </div>
+      </div>
+  </li>
+  `;
+  videos.insertAdjacentHTML('beforeend', video);
+}
+
+window.addEventListener('load', () => {
+  fetch(
+    `https://youtube.googleapis.com/youtube/v3/videos?part=snippet&chart=mostPopular&maxResults=50&regionCode=KR&key=${API_KEY}`,
+    getRequestOptions
+  )
+    .then((res) => res.json())
+    .then((data) => {
+      data.items.forEach((item) => {
+        getChannelIcon(item);
       });
     })
-    .catch((error) => console.log('error', error));
+    .catch((error) => console.error('error', error));
 });
 
 function resetVideos() {
@@ -89,43 +108,43 @@ function resetVideos() {
   }
 }
 
-function search() {
-  const requestOptions = {
-    method: 'GET',
-    redirect: 'follow',
-  };
+function searchedVideos(inputValue) {
   fetch(
-    `https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=10&q=${inputValue}&type=video&key=AIzaSyCf2Majtq2MQgIx7hgo2229KVtVHU3339w`,
-    requestOptions
+    `https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=50&q=${inputValue}&type=video&key=${API_KEY}`,
+    getRequestOptions
   )
-    .then((response) => response.json())
-    .then((result) => {
-      videos.classList.add('searched');
-      const items = result.items;
-      items.forEach((item) => {
-        const video = `
-        <li class="searched__video">
-          <div class="searched__video-thumbnail">
-            <img src="${
-              item.snippet.thumbnails.medium.url
-            }" alt="video thumbnail">
-          </div>
-          <div class="searched__video-metadata">
-            <p class="searched__video-title">${item.snippet.title}</p>
-            <p class="searched__video-published-at">${publishedAt(
-              item.snippet.publishedAt
-            )} ago</p>
-            <p class="searched__video-channel">${item.snippet.channelTitle}</p>
-            <p class="searched__video-description">${
-              item.snippet.description
-            }</p>
-          </div>
-        </li>
-      `;
-        videos.insertAdjacentHTML('beforeend', video);
+    .then((res) => res.json())
+    .then((data) => {
+      data.items.forEach((item) => {
+        getChannelIcon(item);
       });
     })
-    .catch((error) => console.log('error', error));
+    .catch((error) => console.error('error', error));
+}
+
+function setSearchedVideos(data) {
+  videos.classList.add('searched');
+  const video = `
+  <li class="searched__video">
+    <div class="searched__video-thumbnail">
+      <img src="${data.snippet.thumbnails.medium.url}" alt="video thumbnail">
+    </div>
+    <div class="searched__video-metadata">
+      <p class="searched__video-title">${data.snippet.title}</p>
+      <p class="searched__video-published-at">${publishedAt(
+        data.snippet.publishedAt
+      )} ago</p>
+      <div class="searched__video-wrapper">
+        <img src="${
+          data.channelThumbnail
+        }" alt="channel thumbnail" class="searched__video-channel-img">
+        <p class="searched__video-channel">${data.snippet.channelTitle}</p>
+      </div>
+      <p class="searched__video-description">${data.snippet.description}</p>
+    </div>
+  </li>
+  `;
+  videos.insertAdjacentHTML('beforeend', video);
 }
 
 input.addEventListener('keyup', (e) => {
@@ -133,12 +152,14 @@ input.addEventListener('keyup', (e) => {
   if (e.key === 'Enter') {
     if (inputValue) {
       resetVideos();
-      search();
+      searched = true;
+      searchedVideos(inputValue);
     }
   }
 });
 
 inputBtn.addEventListener('click', () => {
   resetVideos();
-  search();
+  searched = true;
+  searchedVideos(inputValue);
 });
