@@ -22,7 +22,12 @@ function publishedAt(data) {
   }
   if (today.getDate() !== Number(publishedDay)) {
     const day = today.getDate() - publishedDay;
-    return day === 1 ? `${day} day` : `${day} days`;
+    if (day >= 7) {
+      const week = Math.floor(day / 7);
+      return week === 1 ? `${week} week` : `${week} weeks`;
+    } else {
+      return day === 1 ? `${day} day` : `${day} days`;
+    }
   }
 }
 
